@@ -18,14 +18,14 @@ public class Transaction {
 	        return instance;
 	    }
 	    public void saveTransaction(String transactionDetails) {
-	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Transactions.txt", true))) {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Git files\\COIS-2240-Assignment3\\Transaction", true))) {
 	            writer.write(transactionDetails);
 	            writer.newLine();
 	        } catch (IOException e) {
 	            System.out.println("Error saving transaction: " + e.getMessage());}
 	    }
 	    public void displayTransactionHistory() {
-	        try (BufferedReader reader = new BufferedReader(new FileReader("Transactions.txt"))) {
+	        try (BufferedReader reader = new BufferedReader(new FileReader("D:\\Git files\\COIS-2240-Assignment3\\Transaction"))) {
 	            String line;
 	            System.out.println("Transaction History:");
 	            while ((line = reader.readLine()) != null) {

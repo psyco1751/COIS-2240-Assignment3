@@ -25,7 +25,7 @@ public class Transaction {
 	            System.out.println("Error saving transaction: " + e.getMessage());}
 	    }
 	    public void displayTransactionHistory() {
-	        try (BufferedReader reader = new BufferedReader(new Fileeader("Transactions.txt"))) {
+	        try (BufferedReader reader = new BufferedReader(new FileReader("Transactions.txt"))) {
 	            String line;
 	            System.out.println("Transaction History:");
 	            while ((line = reader.readLine()) != null) {

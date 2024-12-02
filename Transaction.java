@@ -18,7 +18,7 @@ public class Transaction {
 	        return instance;
 	    }
 	    public void saveTransaction(String transactionDetails) {
-	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Transactions.txt", true))) {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWiter("Transactions.txt", true))) {
 	            writer.write(transactionDetails);
 	            writer.newLine();
 	        } catch (IOException e) {

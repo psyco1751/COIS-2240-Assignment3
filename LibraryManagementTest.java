@@ -18,6 +18,25 @@ public class LibraryManagementTest {
 	        member1 = new Member(1, "John Doe");
 	        transaction = Transaction.getTransaction();
 	    }
+	    public void testBookId() {
+	        try {
+	            // Valid IDs
+	            Book validBook1 = new Book(100, "Valid Book 1");
+	            Book validBook2 = new Book(999, "Valid Book 2");
+
+	            // Invalid IDs
+	            Book invalidBook1 = new Book(50, "Invalid Book 1");
+	            Book invalidBook2 = new Book(1000, "Invalid Book 2");
+
+	            // Check that exceptions are thrown for invalid IDs
+	            try {
+	                new Book(50, "Invalid Book");
+	                fail("Exception not thrown for ID less than 100");
+	            } catch (Exception e) {
+	                assertEquals("Invalid ID for book", e.getMessage());
+	            try {
+	            } catch (Exception e) {
+	        } catch (Exception e) {
 
 	}
 

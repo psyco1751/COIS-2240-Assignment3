@@ -1,8 +1,42 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Transaction {
+	 private static Transaction instance;
 
+	    // Private constructor
+	    private Transaction() {}
+	    public static Transaction getTransaction() {
+	        if (instance == null) {
+	            instance = new Transaction();
+	        }
+	        return instance;
+	    }
+	    public void saveTransaction(String transactionDetails) {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Transactions.txt", true))) {
+	            writer.write(transactionDetails);
+	            writer.newLine();
+	        } catch (IOException e) {
+	            System.out.println("Error saving transaction: " + e.getMessage());}
+	    }
+	    public void displayTransactionHistory() {
+	        try (BufferedReader reader = new BufferedReader(new FileReader("Transactions.txt"))) {
+	            String line;
+	            System.out.println("Transaction History:");
+	            while ((line = reader.readLine()) != null) {
+	                System.out.println(line);
+	            }
+	        } catch (IOException e) {
+	            System.out.println("No transactions found or unable to read file: " + e.getMessage());
+	        }
+	    }
+	        
+	        
     // Perform the borrowing of a book
     public static boolean borrowBook(Book book, Member member) {
         if (book.isAvailable()) {

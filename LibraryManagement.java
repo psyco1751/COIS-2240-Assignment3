@@ -28,30 +28,38 @@ public class LibraryManagement {
             scanner.nextLine();
 
             switch (choice) {
-                case 1:
-                    System.out.print("Enter member ID: ");
-                    int id = scanner.nextInt();
-                	System.out.print("Enter member name: ");
-                    String name = scanner.next();
-                    
-                    scanner.nextLine();
+            case 1:
+                System.out.print("Enter member ID: ");
+                int id = scanner.nextInt();
+                System.out.print("Enter member name: ");
+                String name = scanner.next();
+                scanner.nextLine();
 
-                    Member newMember = new Member(id, name);
-                    library.addMember(newMember);
+                Member newMember = new Member(id, name);
+                boolean memberAdded = library.addMember(newMember);
+                if (memberAdded) {
                     System.out.println("Member added successfully.");
-                    break;
-                case 2:
-                    System.out.print("Enter book ID: ");
-                    id = scanner.nextInt();
-                	System.out.print("Enter book title: ");
-                    String title = scanner.next();
-                    
-                    scanner.nextLine();
+                } else {
+                    System.out.println("Error: Member with ID " + id + " already exists.");
+                }
+                break;
 
-                    Book newBook = new Book(id, title);
-                    library.addBook(newBook);
+            case 2:
+                System.out.print("Enter book ID: ");
+                id = scanner.nextInt();
+                System.out.print("Enter book title: ");
+                String title = scanner.next();
+                scanner.nextLine();
+
+                Book newBook = new Book(id, title);
+                boolean bookAdded = library.addBook(newBook);
+                if (bookAdded) {
                     System.out.println("Book added to library successfully.");
-                    break;
+                } else {
+                    System.out.println("Error: Book with ID " + id + " already exists.");
+                }
+                break;
+
                 case 3:
                 	System.out.println("\n--- Available Members ---");
                     for (Member member : library.getMembers()) {
@@ -116,7 +124,7 @@ public class LibraryManagement {
                     }
                     break;
                 case 6:
-                	Transaction.displayTransactionHistory();
+                	 Transaction.getTransaction().displayTransactionHistory();
                     break;
                 case 7:
                     System.out.println("Exiting. Good Bye..");
